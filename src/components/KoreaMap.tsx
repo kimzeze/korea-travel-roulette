@@ -61,14 +61,14 @@ export default function KoreaMap() {
   const getFillColor = (regionName: string) => {
     const region = regionsState.find((r) => r.name === regionName);
     if (region?.excluded) return '#dedede'; // 제외된 지역: 회색
-    if (selectedRegion === regionName) return '#222'; // 선택된 지역: 검정
+    if (selectedRegion === regionName) return '#A0D1EF'; // 선택된 지역: 검정
     return 'white'; // 기본 색상: 흰색
   };
 
   return (
     <div className="flex flex-col items-center border border-primary">
       {/* 지도 SVG */}
-      <div className="w-[650px] h-[650px] border border-primary">
+      <div className="w-[550px] h-[650px] border border-primary">
       <svg width="534" height="625" viewBox="0 0 534 625" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* 각 지역을 SVG path로 렌더링 */}
               {initialRegions.map((region) => (
