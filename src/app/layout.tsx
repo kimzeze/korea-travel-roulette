@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "국내 여행지 룰렛",
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="ko">
       <head />
       <body>
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
