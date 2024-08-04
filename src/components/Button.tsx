@@ -6,9 +6,10 @@ type TButton = {
   type: "button" | "submit" | "reset";
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
-export default function Button({ label, type, className, onClick }: TButton) {
+export default function Button({ label, type, className, onClick, disabled }: TButton) {
   return (
     <button
       type={type}
@@ -17,6 +18,7 @@ export default function Button({ label, type, className, onClick }: TButton) {
         className
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {label}
     </button>
