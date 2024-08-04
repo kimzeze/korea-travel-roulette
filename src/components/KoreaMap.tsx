@@ -40,7 +40,7 @@ export default function KoreaMap() {
           clearInterval(interval);
           setTimeout(() => {
             const finalRegion = availableRegions[Math.floor(Math.random() * availableRegions.length)];
-            setSelectedRegion(finalRegion.koreanName);
+            setSelectedRegion(finalRegion.name);
             setIsSpinning(false);
           }, 500);
         }
