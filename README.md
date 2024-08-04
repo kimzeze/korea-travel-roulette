@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KOREA RANDOM TRAVEL
+### 2024.08.04 ~ ing (제작중)
 
-## Getting Started
+# 국내 여행지 랜덤 선택을 위한 사이트 개발
 
-First, run the development server:
+<img width="1508" alt="스크린샷 2024-05-02 00 33 44" src="https://github.com/user-attachments/assets/47e58f15-3e86-4ff6-a8db-68bb349145c0">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Aug-05-2024 02-43-28](https://github.com/user-attachments/assets/a2e6daea-adca-4ec6-9604-3e7184f706e1)
+
+
+### Vercel - [아직 배포하지 않았습니다.](/)
+
+---
+
+## 💫 커밋 컨벤션
+
+```
+[🎉init]: 첫번째 커밋
+[✨feat]: 기능 추가, 수정
+[🍱assets]: assets 파일 추가 및 수정
+[🗼markup]: 마크업 추가, 수정
+[💄style]: 스타일 추가, 수정
+[🔰type]: TS와 관련된 작업 (생성, 수정, 삭제 등)
+[🔀merge]: 브랜치 병합, PR ex) develop(jisu) <- develop(public)
+[📝docs]: 마크다운 파일을 생성하거나 수정했을 때, 문서화
+[🐛bug]: 버그 수정/리포트
+[🔨refactor]: 리팩토링, 구조 변경
+[🔥remove]: 파일 삭제
+[🧹chore]: 화면 및 로직의 변화가 없는 작업(기능상 변화 X ex. 파일 구조나 위치 변경, 주석 변경, 파일 이름 수정) 
+[⚙setting]: Eslint, dependency, config 파일 등의 수정 사항
+[📦package]: 패키지 추가
+[👀a11y]: 웹접근성 관련된 작업
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 🚀 프론트엔드 스터디 사이트 기획서
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📌 프로젝트 개요
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 목적 : 국내 지역 중 광역시(도) 및 구(군)을 랜덤하게 선택하여 사용자에게 제공
+- 타겟 사용자 : 랜덤으로 국내 여행지를 정하고 싶은 누구나
+- 기대 효과 : 귀찮게 네이버 등 기타 플랫폼에서 국내 여행지 모두를 입력할 필요없음
 
-## Learn More
+## 🌟 주요 기능 및 요구사항
 
-To learn more about Next.js, take a look at the following resources:
+### 1. 국내 지역을 버튼을 누르면 랜덤하게 제공 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 룰렛 버튼을 누르면 지도에 애니메이션을 통해 UI 변화
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 2. 특정 지역을 원하지 않을 경우 제외 
 
-## Deploy on Vercel
+- 특정 지역을 제외하여 룰렛을 돌리고 싶은 경우 지도 또는 버튼을 눌러 제외
+- 초기화 또는 모두 제외 버튼을 눌러 보다 간편한 선택 제어
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. 네이버 길찾기, 카카오 길찾기 연동
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 소요시간 및 위치를 정확히 알 수 있도록 네이버, 카카오 지도로 연계
+
+### 4. 넓은 지역(광역시, 도)의 룰렛을 돌린 이후 더 좁은 지역(구, 군)의 룰렛 기능 제공
+
+- 사용자가 원하는 경우 더 좁은 지역을 룰렛을 통해 랜덤하게 제공
+
+### 5. 알림창이 아닌 보다 이쁜 결과창 제공
+
+- 기본이 좋기 위해 더 이쁜 결과창으로 제공
+
+### 6. 반응형 웹 디자인으로 모바일 <-> 웹 모두 호환
+
+- 인스타 릴스에 더 올리기 좋아지도록 노력하겠음
+
+### 7. 최종 결과 결정하기를 누를 경우 간단한 관광 안내 기능 제공
+
+- 사용자가 결과를 선택할 경우 영상, 사진 또는 글을 이용하여 관광지 추천 
+
+---
+
+## 🛠️ 기술 스택 및 아키텍처
+
+- 프론트엔드: React, Next.js, TypeScript, tailwind, Zustand
+- 백엔드: SuperBase
+- 배포 및 호스팅: Vercel
+
+---
+
+## 📅 개발 로드맵 및 일정 (예상)
+
+1. 기획 및 요구사항 정의 (1일)
+2. 디자인 및 UI/UX 설계 (1일)
+3. 프론트엔드, 백엔드 개발 (1주)
+5. 통합 및 테스트 (1주)
+6. 배포 및 런칭 (3일)
+
+---
+
+## 🔒 추가 고려사항
+
+- 미정
+
+---
+
+# 사용해보고 싶은 기술 
+
+- Zustand ✔️
+- 네이버, 카카오 길찾기 연동
+- 카카오톡으로 공유하기 기능
