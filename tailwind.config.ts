@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         busan: ['Busan', 'sans-serif'],
+        nanum: ['NanumSquareNeoVariable', 'sans-serif'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
