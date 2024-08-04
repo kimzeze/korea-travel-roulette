@@ -68,13 +68,8 @@ export default function KoreaMap() {
   return (
     <div className="flex flex-col items-center border border-primary">
       {/* 지도 SVG */}
-      <div className="w-[800px] h-[800px]">
-        <svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g clipPath="url(#clip0_411_2)">
-            <mask id="mask0_411_2" style={{maskType: 'luminance'}} maskUnits="userSpaceOnUse" x="0" y="-1" width="800" height="801">
-              <path d="M0 -0.333246H800V799.667H0V-0.333246Z" fill="white"/>
-            </mask>
-            <g mask="url(#mask0_411_2)">
+      <div className="w-[650px] h-[650px] border border-primary">
+      <svg width="534" height="625" viewBox="0 0 534 625" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* 각 지역을 SVG path로 렌더링 */}
               {initialRegions.map((region) => (
                 <path
@@ -90,14 +85,7 @@ export default function KoreaMap() {
                   onClick={() => handleRegionClick(region.name)}
                   style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
                 />
-              ))}
-            </g>
-          </g>
-          <defs>
-            <clipPath id="clip0_411_2">
-              <rect width="800" height="800" fill="white"/>
-            </clipPath>
-          </defs>
+              ))}            
         </svg>
       </div>
       {/* 룰렛 회전 버튼 */}
