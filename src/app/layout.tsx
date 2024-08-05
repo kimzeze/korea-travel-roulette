@@ -3,8 +3,8 @@ import "./globals.css";
 // import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "국내 여행지 룰렛",
-  description: "국내 여행지 룰렛 사이트",
+  title: "KOREA RANDOM TRAVEL",
+  description: "국내 여행지 (지역) 룰렛 사이트",
 };
 
 export default function RootLayout({
@@ -18,6 +18,7 @@ export default function RootLayout({
       <body>
         {/* <Header /> */}
         {children}
+        <div id = "portal"></div>
       </body>
     </html>
   );
