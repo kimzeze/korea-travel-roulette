@@ -6,6 +6,7 @@
 <img width="1508" alt="스크린샷 2024-05-02 00 33 44" src="https://github.com/user-attachments/assets/47e58f15-3e86-4ff6-a8db-68bb349145c0">
 
 ![Aug-05-2024 02-43-28](https://github.com/user-attachments/assets/a2e6daea-adca-4ec6-9604-3e7184f706e1)
+![Aug-05-2024 17-46-16](https://github.com/user-attachments/assets/058f36b0-f1b6-4b18-bb0d-4102ff97b234)
 
 
 ### Vercel - [아직 배포하지 않았습니다.](/)
