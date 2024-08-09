@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header";
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "KOREA RANDOM TRAVEL",
-  description: "국내 여행지 (지역) 룰렛 사이트",
+  title: 'KOREA RANDOM TRAVEL',
+  description: '국내 여행지 (지역) 룰렛 사이트',
 };
 
 export default function RootLayout({
@@ -16,16 +16,19 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head />
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col">
         <Header />
-        <main className="flex-grow relative">
-          <div className="max-w-[1280px] mx-auto w-full relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-primary" style={{ transform: 'translateX(-50%)' }}></div>
+        <main className="relative flex-grow">
+          <div className="relative mx-auto w-full max-w-[1280px]">
+            <div
+              className="absolute bottom-0 left-1/2 top-0 w-px bg-primary"
+              style={{ transform: 'translateX(-50%)' }}
+            ></div>
             {children}
           </div>
         </main>
         <div id="portal"></div>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

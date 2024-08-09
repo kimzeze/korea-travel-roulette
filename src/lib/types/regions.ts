@@ -3,4 +3,4 @@ export type Region = {
   koreanName: string;
   excluded: boolean;
   path: string;
-}
+};

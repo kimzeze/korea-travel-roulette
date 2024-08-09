@@ -13,18 +13,15 @@ interface RegionState {
 export const useRegionStore = create<RegionState>((set, get) => ({
   regions: initialRegions,
   toggleRegion: (regionName: string) =>
-    set((state) => ({
-      regions: state.regions.map((region) =>
-        region.name === regionName
-          ? { ...region, excluded: !region.excluded }
-          : region
+    set(state => ({
+      regions: state.regions.map(region =>
+        region.name === regionName ? { ...region, excluded: !region.excluded } : region,
       ),
     })),
-  isExcluded: (regionName: string) =>
-    get().regions.find((region) => region.name === regionName)?.excluded || false,
+  isExcluded: (regionName: string) => get().regions.find(region => region.name === regionName)?.excluded || false,
   toggleAllRegions: (exclude: boolean) =>
-    set((state) => ({
-      regions: state.regions.map((region) => ({ ...region, excluded: exclude })),
+    set(state => ({
+      regions: state.regions.map(region => ({ ...region, excluded: exclude })),
     })),
   resetRegions: () => set({ regions: initialRegions }),
 }));

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { createPortal } from "react-dom";
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { createPortal } from 'react-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 type TModalPortal = {
   children: React.ReactNode;
@@ -15,13 +15,13 @@ export default function useModal() {
   // 모달창 여는 함수
   const openModal = () => {
     setModal(true);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
 
   // 모달창 닫는 함수
   const closeModal = () => {
     setModal(false);
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = 'auto';
   };
 
   // reactPortal을 사용하여 모달창을 렌더링하는 함수
@@ -32,7 +32,7 @@ export default function useModal() {
     useEffect(() => {
       setMounted(true);
       if (document) {
-        const dom = document.querySelector("#portal");
+        const dom = document.querySelector('#portal');
         ref.current = dom;
       }
     }, []);
@@ -44,16 +44,12 @@ export default function useModal() {
           <div>
             <div className="flex h-[38px] items-end justify-between border-b border-primary bg-white">
               <div className="grow"></div>
-              <div
-                className="flex w-[48px] cursor-pointer items-center justify-center"
-                onClick={closeModal}
-              >
-              </div>
+              <div className="flex w-[48px] cursor-pointer items-center justify-center" onClick={closeModal}></div>
             </div>
             {children}
           </div>
         </div>,
-        ref.current
+        ref.current,
       );
     }
     return null;
