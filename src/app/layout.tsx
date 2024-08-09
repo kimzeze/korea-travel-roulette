@@ -18,6 +18,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <meta name="google-site-verification" content="Lv6mEVE9dzaGiao-qDkBRxkRSI35vz8-Iv9gvRjG_oQ" />
+        <meta name="naver-site-verification" content="c944719c9f8574a84a1c967574ab3e3d00867a6d" />
       </head>
       <body className="flex min-h-screen flex-col">
         <Header />
