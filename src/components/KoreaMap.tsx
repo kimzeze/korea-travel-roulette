@@ -12,6 +12,7 @@ interface ResultModalProps {
 }
 
 /* 결과 모달창 컴포넌트 */
+
 const ResultModal = memo<ResultModalProps>(({ region, onClose }) => {
   return (
     <motion.div
@@ -24,23 +25,25 @@ const ResultModal = memo<ResultModalProps>(({ region, onClose }) => {
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.7 }}
+        transition={{ delay: 0.3 }}
         className="text-center text-primary"
       >
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.6 }}
           className="mb-[48px] font-nanum text-[100px] font-bold text-secondary"
         >
           {region}, Korea
         </motion.p>
-        <Button
-          label="닫기"
-          type="button"
-          className="bg-tertiary font-nanum text-[20px] transition-all duration-300 ease-in-out hover:bg-secondary"
-          onClick={onClose}
-        />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
+          <Button
+            label="닫기"
+            type="button"
+            className="bg-tertiary font-nanum text-[20px] transition-all duration-300 ease-in-out hover:bg-secondary"
+            onClick={onClose}
+          />
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -89,7 +92,9 @@ export default function KoreaMap() {
         } else if (speed >= 400) {
           clearInterval(interval);
           const finalRegion = availableRegions[Math.floor(Math.random() * availableRegions.length)];
-          setRouletteState(prev => ({ ...prev, selectedRegion: finalRegion.name, isSpinning: false }));
+          setTimeout(() => {
+            setRouletteState(prev => ({ ...prev, selectedRegion: finalRegion.name, isSpinning: false }));
+          }, 500);
 
           // 0.5초 후에 모달을 표시
           setTimeout(() => {
