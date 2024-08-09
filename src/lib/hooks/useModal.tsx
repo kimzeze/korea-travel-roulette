@@ -48,12 +48,6 @@ export default function useModal() {
                 className="flex w-[48px] cursor-pointer items-center justify-center"
                 onClick={closeModal}
               >
-                <Image
-                  src={"/close-button.svg"}
-                  alt="팝업창 닫기 버튼"
-                  width={25}
-                  height={25}
-                />
               </div>
             </div>
             {children}
