@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import Header from "@/components/Header";
+import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="ko">
       <head />
       <body>
-        {/* <Header /> */}
+        <Header />
         {children}
         <div id = "portal"></div>
         <Footer/>
