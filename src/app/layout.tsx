@@ -33,6 +33,7 @@ export default function RootLayout({
         </main>
         <div id="portal"></div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
