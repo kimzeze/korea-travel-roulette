@@ -16,10 +16,15 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head />
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Header />
-        {children}
-        <div id = "portal"></div>
+        <main className="flex-grow relative">
+          <div className="max-w-[1280px] mx-auto w-full relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-primary" style={{ transform: 'translateX(-50%)' }}></div>
+            {children}
+          </div>
+        </main>
+        <div id="portal"></div>
         <Footer/>
       </body>
     </html>
