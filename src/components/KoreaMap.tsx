@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState, useCallback, memo } from 'react';
 import { useRegionStore } from '@/lib/stores/regionStore';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,17 +6,15 @@ import useModal from '@/lib/hooks/useModal';
 import Button from '@/components/Button';
 
 interface ResultModalProps {
-  region: string;
+  region: { name: string; koreanName: string };
   onClose: () => void;
 }
-
-/* 결과 모달창 컴포넌트 */
 
 const ResultModal = memo<ResultModalProps>(({ region, onClose }) => {
   return (
     <motion.div
       initial={{ opacity: 0, backgroundColor: 'rgba(0, 0, 0, 0)' }}
-      animate={{ opacity: 1, backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
+      animate={{ opacity: 1, backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
       exit={{ opacity: 0, backgroundColor: 'rgba(0, 0, 0, 0)' }}
       transition={{ duration: 0.3 }}
       className="fixed inset-0 z-50 flex items-center justify-center"
@@ -34,7 +31,7 @@ const ResultModal = memo<ResultModalProps>(({ region, onClose }) => {
           transition={{ delay: 0.6 }}
           className="mb-[48px] font-nanum text-[100px] font-bold text-secondary"
         >
-          {region}, Korea
+          대한민국, {region.koreanName}
         </motion.p>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
           <Button
@@ -54,7 +51,7 @@ ResultModal.displayName = 'ResultModal';
 export default function KoreaMap() {
   const { regions, toggleRegion, isExcluded } = useRegionStore();
   const [rouletteState, setRouletteState] = useState({
-    selectedRegion: null as string | null,
+    selectedRegion: null as { name: string; koreanName: string } | null,
     isSpinning: false,
     showResult: false,
   });
@@ -84,7 +81,11 @@ export default function KoreaMap() {
     const spin = (speed: number) => {
       interval = setInterval(() => {
         const randomIndex = Math.floor(Math.random() * availableRegions.length);
-        setRouletteState(prev => ({ ...prev, selectedRegion: availableRegions[randomIndex].name }));
+        const selectedRegion = availableRegions[randomIndex];
+        setRouletteState(prev => ({
+          ...prev,
+          selectedRegion: { name: selectedRegion.name, koreanName: selectedRegion.koreanName },
+        }));
         counter++;
         if (counter >= 10 && speed < 400) {
           clearInterval(interval);
@@ -92,9 +93,11 @@ export default function KoreaMap() {
         } else if (speed >= 400) {
           clearInterval(interval);
           const finalRegion = availableRegions[Math.floor(Math.random() * availableRegions.length)];
-          setTimeout(() => {
-            setRouletteState(prev => ({ ...prev, selectedRegion: finalRegion.name, isSpinning: false }));
-          }, 500);
+          setRouletteState(prev => ({
+            ...prev,
+            selectedRegion: { name: finalRegion.name, koreanName: finalRegion.koreanName },
+            isSpinning: false,
+          }));
 
           // 0.5초 후에 모달을 표시
           setTimeout(() => {
@@ -110,7 +113,7 @@ export default function KoreaMap() {
 
   const getFillColor = (regionName: string) => {
     if (isExcluded(regionName)) return '#dedede';
-    if (rouletteState.selectedRegion === regionName) return '#A0D1EF';
+    if (rouletteState.selectedRegion?.name === regionName) return '#A0D1EF';
     return 'white';
   };
 
@@ -138,7 +141,9 @@ export default function KoreaMap() {
       <Button
         label={rouletteState.isSpinning ? '룰렛 돌아가는 중💫' : '✈️ 오른쪽으로 스와이프해서 다트 던지기'}
         type="button"
-        className="mt-[20px] w-[350px] bg-tertiary font-nanum text-[16px] transition-all duration-300 ease-in-out hover:bg-secondary"
+        className={`mt-[20px] w-[350px] font-nanum text-[16px] transition-all duration-300 ease-in-out ${
+          rouletteState.isSpinning ? 'bg-secondary hover:bg-secondary' : 'bg-tertiary hover:bg-secondary'
+        }`}
         onClick={spinRoulette}
         disabled={rouletteState.isSpinning}
       />
