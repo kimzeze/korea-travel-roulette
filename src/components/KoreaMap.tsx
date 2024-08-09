@@ -10,10 +10,11 @@ import Button from '@/components/Button';
 const ResultModal = memo(function ResultModal({ region, onClose }: { region: string; onClose: () => void }) {
   return (
     <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+      initial={{ opacity: 0, backgroundColor: 'rgba(0, 0, 0, 0)' }}
+      animate={{ opacity: 1, backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
+      exit={{ opacity: 0, backgroundColor: 'rgba(0, 0, 0, 0)' }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 flex items-center justify-center z-50"
     >
       <motion.div 
         initial={{ scale: 0.8, opacity: 0 }}
