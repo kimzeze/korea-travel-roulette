@@ -7,36 +7,41 @@ import useModal from '@/lib/hooks/useModal';
 import Button from '@/components/Button';
 
 /* 결과 모달창 컴포넌트 */
-const ResultModal = memo(({ region, onClose }: { region: string; onClose: () => void }) => (
-  <motion.div 
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-  >
+const ResultModal = memo(function ResultModal({ region, onClose }: { region: string; onClose: () => void }) {
+  return (
     <motion.div 
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 0.7 }}
-      className="text-primary text-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
     >
-      <motion.p 
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="text-[100px] font-nanum font-bold text-secondary mb-[48px]"
+      <motion.div 
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.7 }}
+        className="text-primary text-center"
       >
-        {region}, Korea
-      </motion.p>
-      <Button
-        label="닫기"
-        type="button"
-        className="hover:bg-secondary bg-tertiary transition-all duration-300 ease-in-out font-nanum text-[20px]"
-        onClick={onClose}
-      />
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="text-[100px] font-nanum font-bold text-secondary mb-[48px]"
+        >
+          {region}, Korea
+        </motion.p>
+        <Button
+          label="닫기"
+          type="button"
+          className="hover:bg-secondary bg-tertiary transition-all duration-300 ease-in-out font-nanum text-[20px]"
+          onClick={onClose}
+        />
+      </motion.div>
     </motion.div>
-  </motion.div>
-));
+  );
+});
+
+ResultModal.displayName = 'ResultModal';
+
 
 export default function KoreaMap() {
   const { regions, toggleRegion, isExcluded } = useRegionStore();
@@ -97,8 +102,8 @@ export default function KoreaMap() {
   };
 
   return (
-    <div className="flex flex-col items-center border border-primary">
-      <div className="w-[550px] h-[650px] border border-primary">
+    <div className="flex flex-col items-center w-[640px] h-full py-[40px] ">
+      <div className="w-[550px] h-[640px] ml-[140px]">
         <svg width="534" height="625" viewBox="0 0 534 625" fill="none" xmlns="http://www.w3.org/2000/svg">
           {regions.map((region) => (
             <path
@@ -118,9 +123,9 @@ export default function KoreaMap() {
         </svg>
       </div>
       <Button
-        label={rouletteState.isSpinning ? '룰렛 돌아가는 중💫' : '✈️ 룰렛 돌리기'}
+        label={rouletteState.isSpinning ? '룰렛 돌아가는 중💫' : '✈️ 오른쪽으로 스와이프해서 다트 던지기'}
         type="button"
-        className="hover:bg-secondary bg-tertiary transition-all duration-300 ease-in-out font-nanum text-[16px]"
+        className="mt-[20px] w-[350px] hover:bg-secondary bg-tertiary transition-all duration-300 ease-in-out font-nanum text-[16px]"
         onClick={spinRoulette}
         disabled={rouletteState.isSpinning}
       />

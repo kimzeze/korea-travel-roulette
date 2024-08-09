@@ -15,34 +15,35 @@ export default function Guide() {
   }, [resetRegions]);
 
   return (
-    <section className="font-nanum border border-primary text-[20px] text-center w-[600px]">
-      <h3 className="mb-2">제외하고 싶은 지역을 선택해주세요</h3>
-      <p className="mb-4">지도 또는 글자를 클릭하면 선택/해제됩니다.</p>
-      <div className="flex justify-center space-x-4 mb-[20px]">
+    <section className="h-[600px] w-full text-center font-nanum text-[20px]">
+      {/* 안내문구 */}
+      <div className="p-[20px]">
+        <p className="mb-2">제외하고 싶은 지역을 선택해주세요</p>
+        <p className="mb-4 text-[16px]">지도 또는 글자를 클릭하면 선택/해제됩니다.</p>
+      </div>
+      {/* 버튼 제어 섹션 */}
+      <div className="flex justify-center space-x-4 p-[20px]">
         <Button
           label="모두 제외하기"
           type="button"
-          className="hover:bg-secondary bg-tertiary transition-all duration-300 ease-in-out"
+          className="bg-tertiary transition-all duration-300 ease-in-out hover:bg-secondary"
           onClick={handleExcludeAll}
         />
         <Button
           label="초기화"
           type="button"
-          className="hover:bg-secondary bg-tertiary transition-all duration-300 ease-in-out"
+          className="bg-tertiary transition-all duration-300 ease-in-out hover:bg-secondary"
           onClick={handleReset}
         />
       </div>
-      <div className="border border-blue-500 h-[300px] w-[440px] mx-auto overflow-y-auto grid grid-cols-3 gap-1">
+      {/* 버튼 모음 */}
+      <div className="mx-auto grid h-[350px] w-[500px] grid-cols-3 gap-1 overflow-y-auto p-[20px]">
         {regions.map(region => (
           <Button
             key={region.name}
             label={region.koreanName}
             type="button"
-            className={`
-              hover:bg-secondary
-              ${isExcluded(region.name) ? 'bg-delete line-through decoration-secondary decoration-2' : ''}
-              transition-all duration-300 ease-in-out
-            `}
+            className={`mx-auto hover:bg-secondary ${isExcluded(region.name) ? 'bg-delete line-through decoration-secondary decoration-2' : ''} transition-all duration-300 ease-in-out`}
             onClick={() => toggleRegion(region.name)}
           />
         ))}
